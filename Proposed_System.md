@@ -11,3 +11,37 @@ The difference in vocal fold vibration between dysarthric and healthy speech pro
 QCP
 
 The QCP method is based on the principles of the closed phase analysis (CP) which estimates the vocal tract response using the covariance method of linear       prediction from few speech samples located in closed phase of the glottal cycle. QCP creates a specific temporal weighting function, called the Attenuated Main  Excitation (AME) function, using glottal closure instants (GCIs) estimated from speech. The AME function is used to attenuate the contribution of the (quasi-) open  phase in the computation of theWeighted Linear Prediction (WLP) coefficients, which results in good estimates of the vocal tract transfer function.
+
+ACOUSTIC PARAMETERS EXTRACTION
+
+Acoustic parameters are extracted from speech using openSMILE, a freely available feature extraction toolkit.
+The openSMILE features have been used as baselines for different paralinguistic challenges from INTERSPEECH 2009 like recognition of emotion, speaker traits and states, and speech pathology.
+The acoustic features extracted by openSMILE mainly represent spectrum, prosody and voice quality.
+Two sets of acoustic features defined in the openSMILE toolkit are used for dysarthric speech classification. The first set is INTERSPEECH 2009 Emotion Challenge feature set consisting of 384 features.
+The second set is the large openSMILE emotion feature set consisting of 6552 features. This is the largest feature set in terms of the number of features in the openSMILE toolkit.
+
+CLASSIFICATION MODEL
+
+In this work, SVMs are used as classifiers.
+SVMs are widely used in pathological speech classification and they are validated with consistent performance even for small amount of speech data in contrast to other techniques
+Separate classifiers are trained using reduced and non-reduced feature sets for openSMILE, glottal features and their combination.
+Separate set of SVM classifiers are developed for each category using acoustic and glottal feature sets both individually and combined.
+After completing the training, the SVM classifiers can be used to identify the presence of dysarthria in the input speech utterance.
+The extracted features are fed to the SVM classifier, which outputs the dysarthric/healthy labels.
+
+Aalto Aparat tool box (Open source software)
+
+Aalto Aparat tool box is used for the extraction of Time and frequency domain parameters.
+Aalto Aparat is useful not only in traditional speech research studies, but also in applied disciplines such as the analysis of voice fatigue in the study of occupational voice. 
+The system estimates the glottal volume velocity waveform from an acoustical speech pressure signal. The glottal flow waveform is estimated using the QCP method. From the estimated glottal flow waveforms, time- and frequency-domain glottal parameters are extracted
+The glottal flow is automatically parameterized using the most common time- and frequency-domain parameters.
+The parameterization results are, among other data, exported to the MATLAB work-space as variable, which allows for easy interactive experimenting with the data.
+Aalto Aparat, is dependent on MATLAB’s object-oriented programming model as well as signal processing and graphical user interfaces, which generally are not implemented in the free software packages
+
+OpenSMILE TOOLKIT (Open source software)
+
+OpenSMILE (open-source Speech and Music Interpretation by Large-space Extraction) is an open-source toolkit for audio feature extraction mand classification of speech and music signals.
+The primary focus is put on audio signal features, however, it can also be used to analyse physiological signals, visual signals, and other physical sensors, given suitable input components.
+OpenSMILE is implemented in C++ with no third-party dependencies for the core functionality.
+It has a fast, efficient and flexible architecture and runs on desktop, mobile and embedded platforms such as Linux, Windows, MacOS, Android, and iOS.
+To facilitate interoperability, it supports reading and writing of various data formats commonly used in the field of data mining and machine learning. These formats include PCM WAVE for audio files, CSV and ARFF for text-based files, HTK parameter files and a simple binary float matrix for binary feature data.
